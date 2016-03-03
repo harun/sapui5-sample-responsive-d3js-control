@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html><head>
+    <meta name="description" content="UI5 XML view example" />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+	<meta http-equiv='Content-Type' content='text/html;charset=UTF-8'/>
+	
+	<title>Sample SAPUI5 control based on D3.js and with responsive behavior</title>
+	
+	<script id='sap-ui-bootstrap' type='text/javascript'
+		src='https://openui5.hana.ondemand.com/resources/sap-ui-core.js'
+		data-sap-ui-theme='sap_bluecrystal'
+		data-sap-ui-libs='sap.m'></script>
+
+  <script type="text/javascript" src="https://rawgithub.com/mlenkeit/sapui5-sample-responsive-d3js-control/master/CustomControl.js"></script>
+    <script>
+      jQuery.sap.declare("CustomControl"); // nasty workaround because you shouldn't include modules directly, just forget you ever say this anywhere
+
+      sap.ui.require([
+        "CustomControl", 
+        "sap/ui/model/json/JSONModel",
+        "sap/ui/base/ManagedObject"
+      ], function(CustomControl, JSONModel, ManagedObject) {
+        var oModel = new JSONModel({
+          dataPoints : [{v: 10}, {v: 20}, {v: 200}, {v: 50}]
+        });
+
+        var oControl = new CustomControl({
+          data : {
+            path : "/dataPoints",
+            template : new ManagedObject()
+          }
+        });
+        oControl.setModel(oModel);
+        oControl.placeAt("content");
+      });  
+    </script>
+  
+	</head>
+	<body class='sapUiBody'>
+		<div id='content'></div>
+	</body>
+</html>
