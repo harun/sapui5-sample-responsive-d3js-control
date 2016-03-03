@@ -65,7 +65,8 @@ sap.ui.define([
       oRm.write("<div");
       oRm.writeControlData(oControl);
       oRm.write(">");
-      oRm.write("<h1>Custom Control</h1>");
+      oRm.write("<h1>Responsive D3.js Custom Control</h1>");
+      oRm.write("<p>Change the size of the window and see how the bars adjust</p>");
       oRm.renderControl(oControl.getAggregation("_html"));
       oRm.write("</div>");
     },
